@@ -4,7 +4,7 @@
   "description": "A blazeplate generator for Vue.js, Vue Router, &amp; Vuex",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/blazeplate/blazeplate-vuejs-vuex-generator/issues"
   },
-  "homepage": "https://github.com/blazeplate/blazeplate-vuejs-vuex-generator#readme"
+  "homepage": "https://github.com/blazeplate/blazeplate-vuejs-vuex-generator#readme",
+  "dependencies": {
+    "blazeplate_generator": "git+https://github.com/blazeplate/blazeplate-generator.git"
+  }
 }
