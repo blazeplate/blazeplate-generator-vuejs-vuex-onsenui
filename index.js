@@ -6,3 +6,26 @@ new generator({
   appconfig: require('blazeplate_generator/examples/todo-list.json'),
   buildId: 'app_5acfeea85535afdb753d55f7'
 }).write()
+
+
+// NOTE - in-progress generator metadata structure
+// QUESTION - should this be encapsulated in package.json? ...probably not
+module.exports = {
+  name: 'Vue.js + Vuex + OnsenUI Generator',
+  keywords: [],
+  generator: generator,
+  destination_dir: 'vue_onsen',
+  // TODO - rename `additional_options`
+  // QUESTION - should these just reuse the standard blazeplate attribute data structure?
+  // ^^ This is a great idea and it enables this to get integrated quickly :)
+  additional_options: [
+    {
+      label: 'Enable Cordova',
+      identifier: 'enable_cordova',
+      description: 'Generates additional files to add cordova support to the generated app.',
+      type: 'BOOL',
+      default: false,
+      required: false
+    }
+  ]
+}

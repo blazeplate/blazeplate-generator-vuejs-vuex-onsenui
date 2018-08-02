@@ -1,6 +1,6 @@
 <template>
   <v-ons-page>
-    <custom-toolbar v-bind="toolbarInfo"></custom-toolbar>
+    <custom-toolbar v-bind="{}"></custom-toolbar>
 
     <v-ons-pull-hook
       :action="onAction"

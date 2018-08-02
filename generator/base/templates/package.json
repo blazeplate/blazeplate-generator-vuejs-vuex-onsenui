@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "gh-pages": "^1.2.0",
+    "lodash": "^4.17.10",
     "onsenui": "^2.10.2",
     "vue": "^2.5.3",
     "vue-onsenui": "^2.6.1",

@@ -5,6 +5,7 @@ const BlazeplateGenerator = require('blazeplate_generator/generators/util/genera
 const BaseGenerator = require('./base')
 const MenuGenerator = require('./menus')
 const ComponentGenerator = require('./components')
+const StoreGenerator = require('./store')
 
 // // // //
 
@@ -93,6 +94,7 @@ module.exports = class extends BlazeplateGenerator {
     await this.composeWith(BaseGenerator)
     await this.composeWith(MenuGenerator)
     await this.composeWith(ComponentGenerator)
+    await this.composeWith(StoreGenerator)
 
     // TODO - implement a more robust logging solution
     console.log('Finished Blazeplate generate')
