@@ -1,5 +1,10 @@
+<%_ for (index in app.schemas) { _%>
+import <%= app.schemas[index].identifier %> from './<%= app.schemas[index].identifier %>'
+<%_ } _%>
+
 export default {
   modules: {
+    <%= storeModules.join(",\n    ") %>,
     navigator: {
       strict: true,
       namespaced: true,
