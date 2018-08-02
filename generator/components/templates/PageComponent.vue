@@ -30,13 +30,25 @@
 
     </v-ons-pull-hook>
 
+    <!-- TODO - wire up to new component -->
+    <v-ons-fab position="bottom right">
+      <v-ons-icon icon="md-plus"></v-ons-icon>
+    </v-ons-fab>
+
+    <!-- TODO - break out into List/Child components -->
     <v-ons-list>
       <!-- <v-ons-list-header>Pull to refresh</v-ons-list-header> -->
+
+      <!-- TODO - tap to navigate to 'show' page -->
       <v-ons-list-item v-for="(model, index) in collection" :key="model._id + index">
         <!-- <div class="left"> -->
           <!-- <img class="list-item__thumbnail" :src="model.url"> -->
         <!-- </div> -->
-        <div class="center">{{ model.<%= schema.attributes[0].identifier %> }}</div>
+
+        <!-- <v-ons-button modifier="small" class="button-margin" @click="$ons.notification.confirm('Are you ready?')">Show</v-ons-button> -->
+
+        <div>{{ model.<%= schema.attributes[0].identifier %> }}</div>
+
       </v-ons-list-item>
     </v-ons-list>
 
