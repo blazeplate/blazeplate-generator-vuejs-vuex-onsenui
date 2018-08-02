@@ -1,9 +1,9 @@
 <template>
   <v-ons-page>
-    <custom-toolbar v-bind="{}"></custom-toolbar>
+    <custom-toolbar title='<%= schema.label_plural %>'></custom-toolbar>
 
     <v-ons-pull-hook
-      :action="onAction"
+      :action="fetch"
       :fixed-content="md"
       :height="md ? 84 : 64"
       :on-pull="md && onPull || null"
@@ -32,11 +32,11 @@
 
     <v-ons-list>
       <v-ons-list-header>Pull to refresh</v-ons-list-header>
-      <v-ons-list-item v-for="(kitten, index) in kittens" :key="kitten.name + index">
-        <div class="left">
-          <img class="list-item__thumbnail" :src="kitten.url">
-        </div>
-        <div class="center">{{ kitten.name }}</div>
+      <v-ons-list-item v-for="(model, index) in collection" :key="model._id + index">
+        <!-- <div class="left"> -->
+          <!-- <img class="list-item__thumbnail" :src="model.url"> -->
+        <!-- </div> -->
+        <div class="center">{{ model.<%= schema.attributes[0].identifier %> }}</div>
       </v-ons-list-item>
     </v-ons-list>
 
@@ -44,47 +44,28 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
   data() {
     return {
       state: 'initial',
-      kittens: this.getRandomData(),
       ratio: 0
     };
   },
-
+  created () {
+    return this.fetch()
+  },
+  computed: mapGetters({
+    fetching: '<%= schema.identifier %>/fetching',
+    collection: '<%= schema.identifier %>/collection'
+  }),
   methods: {
+    fetch () {
+      this.$store.dispatch('<%= schema.identifier %>/fetchCollection')
+    },
     onPull(ratio) {
       this.ratio = ratio;
-    },
-    onAction(done) {
-      setTimeout(() => {
-        this.kittens = [...this.kittens, this.getRandomKitten()];
-        done();
-      }, 1500);
-    },
-    getRandomName() {
-      const names = ['Oscar', 'Max', 'Tiger', 'Sam', 'Misty', 'Simba', 'Coco', 'Chloe', 'Lucy', 'Missy'];
-      return names[Math.floor(Math.random() * names.length)];
-    },
-    getRandomUrl() {
-      const width = 40 + Math.floor(20 * Math.random());
-      const height = 40 + Math.floor(20 * Math.random());
-
-      return `https://placekitten.com/g/${width}/${height}`;
-    },
-    getRandomKitten() {
-      return {
-        name: this.getRandomName(),
-        url: this.getRandomUrl()
-      };
-    },
-    getRandomData() {
-      const data = [];
-      for (let i = 0; i < 8; i++) {
-        data.push(this.getRandomKitten());
-      }
-      return data;
     }
   }
 };

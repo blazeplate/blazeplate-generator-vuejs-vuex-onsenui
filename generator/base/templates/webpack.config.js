@@ -101,7 +101,12 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    noInfo: true
+    noInfo: true,
+    proxy: {
+      '/api': {
+        'target': 'http://localhost:4000'
+      }
+    }
   },
   performance: {
     hints: false
