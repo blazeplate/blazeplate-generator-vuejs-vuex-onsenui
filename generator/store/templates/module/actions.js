@@ -1,5 +1,6 @@
 // import router from '@/routers'
 import { $GET, $POST, $PUT, $DEL } from '../lib/helpers'
+import VueOnsen from 'vue-onsenui';
 
 const API_ROOT = '/api/<%= schema.identifier_plural %>'
 
@@ -18,7 +19,7 @@ export default {
     })
     .catch((err) => {
       commit('fetching', false)
-      commit('notification/add', { message: 'Fetch error', context: 'danger', dismissible: true }, { root: true })
+      VueOnsen._ons.notification.toast('Fetch error', { buttonLabel: 'Dismiss', timeout: 1500 })
       throw err // TODO - better error handling
     })
   },
@@ -34,7 +35,7 @@ export default {
     })
     .catch((err) => {
       commit('fetching', false)
-      commit('notification/add', { message: 'Fetch error', context: 'danger', dismissible: true }, { root: true })
+      VueOnsen._ons.notification.toast('Fetch error', { buttonLabel: 'Dismiss', timeout: 1500 })
       throw err // TODO - better error handling
     })
   },
@@ -48,7 +49,7 @@ export default {
     })
     .catch((err) => {
       commit('fetching', false)
-      commit('notification/add', { message: 'Fetch error', context: 'danger', dismissible: true }, { root: true })
+      VueOnsen._ons.notification.toast('Fetch error', { buttonLabel: 'Dismiss', timeout: 1500 })
       throw err // TODO - better error handling
     })
   },
@@ -64,7 +65,7 @@ export default {
     })
     .catch((err) => {
       commit('fetching', false)
-      commit('notification/add', { message: 'Create error', context: 'danger', dismissible: true }, { root: true })
+      VueOnsen._ons.notification.toast('Create error', { buttonLabel: 'Dismiss', timeout: 1500 })
       throw err
     })
   },
@@ -80,7 +81,7 @@ export default {
     })
     .catch((err) => {
       commit('fetching', false)
-      commit('notification/add', { message: 'Update error', context: 'danger', dismissible: true }, { root: true })
+      VueOnsen._ons.notification.toast('Update error', { buttonLabel: 'Dismiss', timeout: 1500 })
       throw err
     })
   },
@@ -96,7 +97,7 @@ export default {
     })
     .catch((err) => {
       commit('fetching', false)
-      commit('notification/add', { message: 'Destroy error', context: 'danger', dismissible: true }, { root: true })
+      VueOnsen._ons.notification.toast('Destroy error', { buttonLabel: 'Dismiss', timeout: 1500 })
       throw err // TODO - better error handling
     })
   }

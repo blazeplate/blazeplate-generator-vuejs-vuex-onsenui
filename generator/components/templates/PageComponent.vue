@@ -1,6 +1,6 @@
 <template>
   <v-ons-page>
-    <custom-toolbar title='<%= schema.label_plural %>'></custom-toolbar>
+    <!-- <custom-toolbar title='<%= schema.label_plural %>'></custom-toolbar> -->
 
     <v-ons-pull-hook
       :action="fetch"
@@ -14,9 +14,9 @@
       <v-ons-icon v-if="!md"
         size="22px"
         class="pull-hook-spinner"
-        :icon="state === 'action' ? 'fa-spinner' : 'fa-arrow-down'"
-        :rotate="state === 'preaction' && 180"
-        :spin="state === 'action'"
+        :icon="fetching ? 'fa-spinner' : 'fa-arrow-down'"
+        :rotate="fetching && 180"
+        :spin="fetching"
       ></v-ons-icon>
 
       <!-- Show this on Material Design -->
@@ -31,7 +31,7 @@
     </v-ons-pull-hook>
 
     <v-ons-list>
-      <v-ons-list-header>Pull to refresh</v-ons-list-header>
+      <!-- <v-ons-list-header>Pull to refresh</v-ons-list-header> -->
       <v-ons-list-item v-for="(model, index) in collection" :key="model._id + index">
         <!-- <div class="left"> -->
           <!-- <img class="list-item__thumbnail" :src="model.url"> -->
@@ -39,6 +39,10 @@
         <div class="center">{{ model.<%= schema.attributes[0].identifier %> }}</div>
       </v-ons-list-item>
     </v-ons-list>
+
+    <!-- <v-ons-card v-for="(model, index) in collection" :key="model._id + index"> -->
+      <!-- <div class="title">{{ model.<%= schema.attributes[0].identifier %> }}</div> -->
+    <!-- </v-ons-card> -->
 
   </v-ons-page>
 </template>
